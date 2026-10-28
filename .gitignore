@@ -1,0 +1,31 @@
+# Audio, embeddings and corpus files (licensed data, never commit)
+*.wav
+*.WAV
+*.flac
+*.alaw
+*.zip
+*.pkl
+*.npz
+*.npy
+*.TextGrid
+*.eaf
+manifest*.csv
+*.xlsx
+EMBEDDINGS/
+NOISY_AUDIO/
+data/
+
+# Per-utterance prediction files
+*_adult_results.csv
+*_child_predictions.csv
+
+# Environment and editor files
+.venv/
+venv/
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+.env
+
+# Data preparation scripts, kept locally
+data_prep/
