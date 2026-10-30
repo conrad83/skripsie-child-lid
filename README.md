@@ -21,7 +21,7 @@ requirements.txt   Python packages
 | Notebook | What it does | Report |
 |---|---|---|
 | `01_mms_baseline` | MMS-LID on child speech, no adaptation | Chapter 4, baseline (Table 4.1) |
-| `02_adult_baseline` | MMS-LID on adult speech (NCHLT, VoxPopuli) | Chapter 4, baseline (Table 4.1, last column) |
+| `02_adult_baseline` | MMS-LID on adult speech (NCHLT, VoxPopuli, SLR83) | Chapter 4, baseline (Table 4.1, last column) |
 | `03_layer_sweep_mms` | Classifier on every MMS layer, chosen on validation | Chapter 4, layer selection and model comparison |
 | `04_layer_sweep_wavlm` | Same for WavLM | Chapter 4 |
 | `05_layer_sweep_whisper` | Same for the Whisper encoder | Chapter 4 |
@@ -49,6 +49,8 @@ No audio or derived data is included. The corpora have to be obtained from their
 | Dutch | CHOREC (Cleuren et al., 2008) | On request from the corpus owners |
 | Adult Afrikaans, English, isiXhosa, Sesotho sa Leboa | NCHLT speech corpus (Barnard et al., 2014) | SADiLaR |
 | Adult Dutch | VoxPopuli (`facebook/voxpopuli`, `nl`, test split) | Streamed from the Hugging Face hub |
+| Adult British English | OpenSLR SLR83, English accents in the British Isles (Demirsahin et al., 2020), England accents only: southern, midlands and northern | Streamed from the Hugging Face hub (`ylacombe/english_dialects`) |
+
 
 AI (Claude) was used to split these large datasets into utterances using their transcriptions. 
 
@@ -56,6 +58,7 @@ AI (Claude) was used to split these large datasets into utterances using their t
 
 1. Install Python 3.9 and the packages: `pip install -r requirements.txt`. The models are downloaded from the Hugging Face hub on first use.
 2. Point `DATA_DIR` in `config.py` (or the `SKRIPSIE_DATA` environment variable) at the folder that holds the prepared clips and manifests.
-3. Run the notebooks in order. Notebooks 03–05 extract the embeddings of every layer and take several hours each on a CPU. Notebooks 06–09 load the saved layer-9 MMS embeddings from `EMBEDDINGS/`.
+3. Run the notebooks in order. Notebooks 03–05 extract the embeddings of every layer and take several hours each on a CPU. The saved embeddings are not included, because they contain corpus metadata and transcriptions. Run the "regenerate" cells in notebooks 06–09 once to create them in `EMBEDDINGS/`, then skip those cells on later runs, because they take several hours and overwrite the saved files.
+
 
 The noise added in notebook 09 is random, so a full rerun of the SNR experiment gives slightly different numbers from the report.

@@ -29,4 +29,7 @@ ADULT_NCHLT = {
     "xho": DATA_DIR / "nchlt_xho",
 }
 
+(REPO_DIR / "EMBEDDINGS").mkdir(exist_ok=True)
+
+
 
